@@ -1,0 +1,13 @@
+FROM node:lts-alpine3.17 as build
+
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY *.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN astro build
